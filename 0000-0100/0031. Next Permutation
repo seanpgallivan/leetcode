@@ -1,0 +1,21 @@
+const nextPermutation = (arr, n=1) => {
+    let len = arr.length - 1
+    while (n--) {
+        let i = len - 1
+        while (arr[i] >= arr[i + 1])
+            i--
+        let j = i + 1, k = len
+        while (k > j) 
+            swap(arr, j++, k--)
+        if (~i) {
+            k = i + 1
+            while (arr[i] >= arr[k])
+                k++
+            swap(arr, i, k)
+        }
+    }
+}
+const swap = (arr, i, j) => {
+    let temp = arr[i]
+    arr[i] = arr[j], arr[j] = temp
+}
